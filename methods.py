@@ -21,7 +21,7 @@ class Method:
             func.preSearch(x, direction)
             step = GSS(func.phi, bracket, tolerance)
             aux = x
-            x = x + alpha * direction
+            x = x + step * direction
             k = k + 1
             if x == aux:
                 break
@@ -50,7 +50,7 @@ class Method:
             func.preSearch(x, direction)
             step = GSS(func.phi, bracket, tolerance)
             aux = x
-            x = x + alpha * direction
+            x = x + step * direction
             k = k + 1
             if x == aux:
                 break
@@ -81,7 +81,7 @@ class Method:
             func.preSearch(x, direction)
             step = GSS(func.phi, bracket, tolerance)
             aux = x
-            x = x + alpha * direction
+            x = x + step * direction
             k = k + 1
             if x == aux:
                 break
