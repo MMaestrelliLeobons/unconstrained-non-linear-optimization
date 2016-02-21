@@ -22,7 +22,7 @@ class Method:
             step = GSS(func.phi, bracket, tolerance)
             aux = x
             x = x + alpha * direction
-            k++
+            k = k + 1
             if x == aux:
                 break
 
@@ -51,7 +51,7 @@ class Method:
             step = GSS(func.phi, bracket, tolerance)
             aux = x
             x = x + alpha * direction
-            k++
+            k = k + 1
             if x == aux:
                 break
 
@@ -82,7 +82,7 @@ class Method:
             step = GSS(func.phi, bracket, tolerance)
             aux = x
             x = x + alpha * direction
-            k++
+            k = k + 1
             if x == aux:
                 break
             hessian = BFGS(func, x, aux, hessian)
