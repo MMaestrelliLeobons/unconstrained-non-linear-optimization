@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 import numpy as np
 import math
 
@@ -16,6 +19,7 @@ class funcA:
 
     def Gradient(self, x):
         """
+            returns the gradient [g1, g2, g3]
             x -> [x1, x2, x3]
         """
         x_grad = 1 / (2 * math.sqrt(np.sum(x)))
@@ -24,6 +28,7 @@ class funcA:
 
     def Hessian(self, x):
         """
+            returns the hessian [[h11, h12, h13], [h21, h22, h23], [h31, h32, h33]]
             x -> [x1, x2, x3]
         """
         x_hessian = -1 / (4 * math.pow(np.sum(x), 3/2))
@@ -59,6 +64,7 @@ class funcB:
 
     def Gradient(self, x):
         """
+            returns the gradient [g1, g2]
             x -> [x1, x2]
         """
         denominator = math.pow(x[0] - 2, 2) + math.pow(x[1] - 1, 2) + 1
@@ -69,6 +75,7 @@ class funcB:
 
     def Hessian(self, x):
         """
+            returns the hessian [[h11, h12], [h21, h22]]
             x -> [x1, x2]
         """
         denominator = math.pow(x[0] - 2, 2) + math.pow(x[1] - 1, 2) + 1

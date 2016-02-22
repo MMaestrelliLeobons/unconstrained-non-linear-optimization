@@ -1,12 +1,22 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 import numpy as np
 import math
-import functions
-import golden_section_search
-import broyden_fletcher_goldfarb_shannon
+from golden_section_search import *
+from broyden_fletcher_goldfarb_shanno import *
 
 class Method:
 
-    def GDM(func, x, tolerance = 1e-5, bracket = 1, maxIter = 100): 
+    def __init__(self):
+        self._xGDM = -1
+        self._iterGDM = -1
+        self._xNM = -1
+        self._iterNM = -1
+        self._xQNM = -1
+        self._iterQNM = -1
+
+    def GDM(self, func, x, tolerance = 1e-5, bracket = 1, maxIter = 100): 
         """
         Gradient Descent Method:
         func -> function to be minimized
@@ -16,26 +26,26 @@ class Method:
         maxIter -> maximum number of iterations
         """
 
-        for k in range(0, maxIter - 1):
-            direction = -func.fGradient(x).T
+        for k in range(1, maxIter):
+            direction = -func.Gradient(x).T
             func.preSearch(x, direction)
             step = GSS(func.phi, bracket, tolerance)
             aux = x
+            print x, step, direction
             x = x + step * direction
-            k = k + 1
-            if x == aux:
+            if np.allclose(x, aux, atol=tolerance) == 1:
                 break
 
-        self.xGDM = x
-        self.iterGDM = k
+        self._xGDM = x
+        self._iterGDM = k
 
-    def resultsGDM():
-        return self.xGDM
+    def resultsGDM(self):
+        return self._xGDM
 
-    def iterGDM():
-        return self.iterGDM
+    def iterGDM(self):
+        return self._iterGDM
 
-    def NM(func, x, tolerance = 1e-5, bracket = 1, maxIter = 100):
+    def NM(self, func, x, tolerance = 1e-5, bracket = 1, maxIter = 100):
         """
         Newton Method:
         func -> function to be minimized
@@ -45,26 +55,25 @@ class Method:
         maxIter -> maximum number of iterations
         """
         
-        for k in range(0, maxIter - 1):
+        for k in range(1, maxIter):
             direction = -np.dot(np.linalg.inv(func.Hessian(x)), func.Gradient(x))
             func.preSearch(x, direction)
             step = GSS(func.phi, bracket, tolerance)
             aux = x
             x = x + step * direction
-            k = k + 1
-            if x == aux:
+            if np.allclose(x, aux, atol=tolerance) == 1:
                 break
 
-        self.xNM = x
-        self.iterNM = k
+        self._xNM = x
+        self._iterNM = k
 
-    def resultsNM():
-        return self.xNM
+    def resultsNM(self):
+        return self._xNM
 
-    def iterNM():
-        return self.iterNM
+    def iterNM(self):
+        return self._iterNM
 
-    def QNM(func, x, tolerance = 1e-5, bracket = 1, maxIter = 100):
+    def QNM(self, func, x, tolerance = 1e-5, bracket = 1, maxIter = 100):
         """
         Quasi-Newton Method:
         func -> function to be minimized
@@ -76,22 +85,21 @@ class Method:
 
         hessian = np.linalg.inv(func.Hessian(x))
 
-        for k in range(0, maxIter - 1):
+        for k in range(1, maxIter):
             direction = -np.dot(hessian, func.Gradient(x))
             func.preSearch(x, direction)
             step = GSS(func.phi, bracket, tolerance)
             aux = x
             x = x + step * direction
-            k = k + 1
-            if x == aux:
+            if np.allclose(x, aux, atol=tolerance) == 1:
                 break
             hessian = BFGS(func, x, aux, hessian)
 
-        self.xQNM = x
-        self.iterQNM = k
+        self._xQNM = x
+        self._iterQNM = k
 
-    def resultsQNM():
-        return self.xQNM
+    def resultsQNM(self):
+        return self._xQNM
 
-    def iterQNM():
-        return self.iterQNM
+    def iterQNM(self):
+        return self._iterQNM

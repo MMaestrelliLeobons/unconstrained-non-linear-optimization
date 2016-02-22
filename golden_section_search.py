@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 import math
 import functions
 
@@ -20,7 +23,7 @@ def GSS(phi, bracket, tolerance):
     golden_ratio = (math.sqrt(5) - 1) / 2
     u = b - golden_ratio * (b - a)
     v = a + golden_ratio * (b - a)
-    while abs(c - d) > tolerance:
+    while abs(u - v) > tolerance:
         
         if phi(u) < phi(v):
             b = v
