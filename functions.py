@@ -4,8 +4,8 @@ import math
 class funcA:
 
     def __init__(self):
-        self.xPhi = [0,0,0];
-        self.directionPhi = 0;
+        self.xPhi = np.zeros(3)
+        self.directionPhi = np.zeros(3)
 
     def Function(self, x):
         """
@@ -47,11 +47,12 @@ class funcA:
 class funcB:
 
     def __init__(self):
-        self.xPhi = [0,0];
-        self.directionPhi = 0;
+        self.xPhi = np.zeros(2)
+        self.directionPhi = np.zeros(2)
 
     def Function(self, x):
         """
+            f(x) = log(1 + (x1 - 2)^2 + (x2 - 1)^2)
             x -> [x1, x2]
         """
         return math.log(1 + math.pow(x[0] - 2, 2) + math.pow(x[1] - 1, 2))
