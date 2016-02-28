@@ -31,7 +31,6 @@ class Method:
             func.preSearch(x, direction)
             step = GSS(func.phi, bracket, tolerance)
             aux = x
-            print x, step, direction
             x = x + step * direction
             if np.allclose(x, aux, atol=tolerance) == 1:
                 break

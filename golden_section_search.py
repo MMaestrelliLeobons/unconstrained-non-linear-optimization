@@ -4,6 +4,8 @@
 import math
 import functions
 
+golden_ratio = (math.sqrt(5) - 1) / 2
+
 def GSS(phi, bracket, tolerance):
     """
     Golden Section Search:
@@ -15,12 +17,12 @@ def GSS(phi, bracket, tolerance):
     a = 0
     s = bracket
     b = 2 * bracket
+    
     while phi(b) < phi(s):
         a = s
         s = b
         b = 2 * b
 
-    golden_ratio = (math.sqrt(5) - 1) / 2
     u = b - golden_ratio * (b - a)
     v = a + golden_ratio * (b - a)
     while abs(u - v) > tolerance:

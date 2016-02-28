@@ -8,9 +8,10 @@ from methods import *
 m = Method()
 
 #funcA
-# m.GDM(funcA(), 8)
-# print ("GDM")
-# print("result = ", m.resultsGDM(), " k = ", m.iterGDM())
+m.GDM(funcA(), [1e-6, 1e-6, 1e-6], 1e-4, -1, 10000)
+print "GDM"
+print"result = ", m.resultsGDM()
+print " k = ", m.iterGDM()
 
 # m.NM(funcA(), 1)
 # print ("NM")
@@ -22,7 +23,7 @@ m = Method()
 
 #funcB
 m.GDM(funcB(), [1848,4], 1e-5, 1, 1000)
-print ("GDM")
+print "GDM"
 print "result = ", m.resultsGDM()
 print "k = " , m.iterGDM()
 
