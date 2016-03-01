@@ -42,6 +42,7 @@ class Method:
 
         self._xGDM = x
         self._iterGDM = k
+        self._errorGDM = math.abs(x - aux)
         self._timeGDM = tm.clock() - start
 
     def resultsGDM(self):
@@ -52,6 +53,9 @@ class Method:
 
     def timeGDM(self):
         return self._timeGDM
+
+    def errorGDM(self):
+        return self._errorGDM
 
     def NM(self, func, x, tolerance = 1e-5, bracket = 1, maxIter = 100):
         """
@@ -75,6 +79,7 @@ class Method:
 
         self._xNM = x
         self._iterNM = k
+        self._errorNM = math.abs(x - aux)
         self._timeNM = tm.clock() - start
 
     def resultsNM(self):
@@ -85,6 +90,9 @@ class Method:
 
     def timeNM(self):
         return self._timeNM
+
+    def errorNM(self):
+        return self._errorNM
 
     def QNM(self, func, x, tolerance = 1e-5, bracket = 1, maxIter = 100):
         """
@@ -110,6 +118,7 @@ class Method:
 
         self._xQNM = x
         self._iterQNM = k
+        self._errorQNM = math.abs(x - aux)
         self._timeQNM = tm.clock() - start
 
     def resultsQNM(self):
@@ -120,3 +129,6 @@ class Method:
 
     def timeQNM(self):
         return self._timeQNM
+
+    def errorQNM(self):
+        return self._errorQNM
