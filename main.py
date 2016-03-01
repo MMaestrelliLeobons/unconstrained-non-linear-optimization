@@ -12,6 +12,7 @@ m.GDM(funcA(), [1e-6, 1e-6, 1e-6], 1e-4, -1, 10000)
 print "GDM"
 print"result = ", m.resultsGDM()
 print " k = ", m.iterGDM()
+print "time elapsed", m.timeGDM()
 
 # m.NM(funcA(), 1)
 # print ("NM")
@@ -26,6 +27,7 @@ m.GDM(funcB(), [1848,4], 1e-5, 1, 1000)
 print "GDM"
 print "result = ", m.resultsGDM()
 print "k = " , m.iterGDM()
+print "time elapsed", m.timeGDM()
 
 # m.NM(funcB(), [1,1])
 # print ("NM")
