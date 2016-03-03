@@ -42,7 +42,7 @@ class Method:
 
         self._xGDM = x
         self._iterGDM = k
-        self._errorGDM = math.abs(x - aux)
+        self._errorGDM = np.absolute(x - aux)
         self._timeGDM = tm.clock() - start
 
     def resultsGDM(self):
@@ -79,7 +79,7 @@ class Method:
 
         self._xNM = x
         self._iterNM = k
-        self._errorNM = math.abs(x - aux)
+        self._errorNM = np.absolute(x - aux)
         self._timeNM = tm.clock() - start
 
     def resultsNM(self):
@@ -118,7 +118,7 @@ class Method:
 
         self._xQNM = x
         self._iterQNM = k
-        self._errorQNM = math.abs(x - aux)
+        self._errorQNM = np.absolute(x - aux)
         self._timeQNM = tm.clock() - start
 
     def resultsQNM(self):
