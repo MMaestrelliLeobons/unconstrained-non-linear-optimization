@@ -69,7 +69,7 @@ class Method:
         start = tm.clock()
         
         for k in range(1, maxIter + 1):
-            direction = -np.dot(np.linalg.inv(func.Hessian(x)), func.Gradient(x))
+            direction = np.dot(np.linalg.inv(func.Hessian(x)), func.Gradient(x))
             func.preSearch(x, direction)
             step = GSS(func.phi, bracket, tolerance)
             aux = x
@@ -107,7 +107,7 @@ class Method:
         hessian = np.linalg.inv(func.Hessian(x))
 
         for k in range(1, maxIter + 1):
-            direction = -np.dot(hessian, func.Gradient(x))
+            direction = np.dot(hessian, func.Gradient(x))
             func.preSearch(x, direction)
             step = GSS(func.phi, bracket, tolerance)
             aux = x

@@ -59,13 +59,8 @@ print header
 
 func_b = funcB()
 handleGDM(fileB, func_b, [1848, 4], 1e-5, 1, 1000)
-handleNM(fileB, func_b, [1, 4])
-handleQNM(fileB, func_b, [1, 4])
-
-
-# m.QNM(funcB(), [1,1])
-# print ("QNM")
-# print("result = ", m.resultsQNM(), " k = ", m.iterQNM())
+handleNM(fileB, func_b, [1848, 4], 1e-5, 1, 1000)
+handleQNM(fileB, func_b, [1848, 4], 1e-5, 1, 1000)
 
 fileA.close()
 fileB.close()
