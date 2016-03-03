@@ -78,11 +78,11 @@ class funcB:
             returns the hessian [[h11, h12], [h21, h22]]
             x -> [x1, x2]
         """
-        denominator = math.pow(x[0] - 2, 2) + math.pow(x[1] - 1, 2) + 1
-        x11_hessian = (2 / denominator) - math.pow(2 * x[0] - 4, 2) / math.pow(denominator, 2)
-        x12_hessian = -4 * (x[0] - 2) * (x[1] - 1) / math.pow(denominator, 2)
+        denominator = (x[0]**2 - 4*x[0] + x[1]**2 - 2 * x[1] + 6)**2
+        x11_hessian = -2 * (x[0]**2 - 4 * x[0] - x[1]**2 + 2 * x[1] + 2) / denominator
+        x12_hessian = - 4 * (x[0] - 2) * (x[1] - 1) / denominator
         x21_hessian = x12_hessian
-        x22_hessian = (2 / denominator) - math.pow(2 * x[1] - 2, 2) / math.pow(denominator, 2)
+        x22_hessian = 2 * (x[0]**2 - 4 * x[0] - x[1]**2 + 2 * x[1] + 4) / denominator
         hessian = np.array([[x11_hessian, x12_hessian],
                             [x21_hessian, x22_hessian]])
         return hessian
